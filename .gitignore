@@ -1,0 +1,7 @@
+# Ignore all npyfiles and data added readme
+*.npy
+*.csv
+*.tsv
+*.pickle
+Models/
+csa_data/
