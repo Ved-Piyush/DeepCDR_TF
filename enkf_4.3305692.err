@@ -20,3 +20,4 @@ WARNING:tensorflow:No training configuration found in save file, so the model wa
   super(Adam, self).__init__(name, **kwargs)
 2023-07-30 04:08:11.308005: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8401
 2023-07-30 04:08:13.124912: I tensorflow/stream_executor/cuda/cuda_blas.cc:1786] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 5). These functions will not be directly callable after loading.
