@@ -447,7 +447,7 @@ def deepcdrgcn(training = training, dropout1 = dropout1, dropout2 = dropout2):
     final_out = final_out_layer(x)
     simplecdr = tf.keras.models.Model([input_gcn_features, input_norm_adj_mat, input_gen_expr,
                                    input_gen_methy1, input_gen_mut1], final_out)
-    simplecdr.compile(loss = tf.keras.losses.BinaryCrossentropy(), 
+    simplecdr.compile(loss = tf.keras.losses.MeanSquaredError(), 
                       # optimizer = tf.keras.optimizers.Adam(lr=1e-3),
                     optimizer = tf.keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False), 
                     metrics = [tf.keras.metrics.RootMeanSquaredError()])
@@ -488,7 +488,7 @@ check.fit([train_gcn_feats, train_adj_list, train_gcn_feats_omics, train_keep["C
          validation_data = ([valid_gcn_feats, valid_adj_list, valid_gcn_feats_omics, test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1)],
           test_keep["AUC"].values.reshape(-1,1)), 
          batch_size = 256, epochs = 10000, 
-         callbacks = tf.keras.callbacks.EarlyStopping(monitor = "val_loss", patience = 10, restore_best_weights=True, 
+         callbacks = tf.keras.callbacks.EarlyStopping(monitor = "val_loss", patience = 20, restore_best_weights=True, 
                                                      mode = "min"), shuffle = True, verbose = 1, 
          validation_batch_size = 256)
 
